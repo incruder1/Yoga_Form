@@ -1,0 +1,7 @@
+//create responsive design for mine form 
+@media (max-width: 768px) {
+    .mine-form {
+        width: 100%;
+    }
+}
+</s>
