@@ -18,9 +18,12 @@ function Header() {
         toast.success("Logout Successfully");
       };
   return (
-    <>
-    <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+  <>
+    <nav className="navbar navbar-expand-lg bg-primary fixed-top">
       <div className="container-fluid">
+      <Link to="/" className="navbar-brand">
+           Yoga
+          </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,13 +36,11 @@ function Header() {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link to="/" className="navbar-brand">
-           Yoga
-          </Link>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 bg-primary ">
            
-            <li className="nav-item">
-              <NavLink to="/" className="nav-link ">
+            <li className="nav-item text-light ">
+              <NavLink to="/" className="nav-link  text-light">
                 Home
               </NavLink>
             </li>
@@ -47,12 +48,12 @@ function Header() {
 
             {!auth?.user ? (
               <>
-                <li className="nav-item">
+                <li className="nav-item bg-light">
                   <NavLink to="/signup " className="nav-link">
                     Register
                   </NavLink>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item bg-light">
                   <NavLink to="/login" className="nav-link">
                     Login
                   </NavLink>
@@ -66,15 +67,15 @@ function Header() {
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
-                    style={{ border: "none" }}
+                    style={{ border: "none", color:"white" }}
                   >
                     {auth?.user?.name}
                   </NavLink>
-                  <ul className="dropdown-menu">
+                  <ul className="dropdown-menu bg-light">
                     <li>
                       <NavLink
                         to="/"
-                        className="dropdown-item"
+                        className="dropdown-item bg-light"
                       >
                         Dashboard
                       </NavLink>
