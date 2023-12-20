@@ -32,7 +32,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://yogaform-production-74ce.up.railway.app/api/signup", {
+      const res = await axios.post("http://localhost:3001/api/signup", {
         email,password,batch, name,age
       });
       if (res && res.data.success) {

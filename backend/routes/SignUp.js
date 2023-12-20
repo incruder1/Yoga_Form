@@ -1,29 +1,30 @@
-
 import { comparePassword, hashPassword } from "../helper/authHelper.js";
-import pool from "../config/db.js"
-import UUID  from 'uuid-int';
-export  const SignUp = async (req, res) => {
+import pool from "../config/db.js";
+import UUID from "uuid-int";
+export const SignUp = async (req, res) => {
   try {
-    const {name, email,password,  batch, age } = req.body;
-    
-    
+    const { name, email, password, batch, age } = req.body;
+
     const id = 0;
 
     const generator = UUID(id);
-    
+
     const uuid = generator.uuid();
-    console.log(uuid+"Dasdasdasdasd asd sad");
+    console.log(uuid + "Dasdasdasdasd asd sad");
     console.log(email);
     console.log(password);
-    
+
     //validations
-    
+
     if (!name || !email || !password || !batch || !age) {
-      return res.status(400).json({ error: 'Missing required fields.' });
+      return res.status(400).json({ error: "Missing required fields." });
     }
-   
+
     //check user
-    const exisitingUser =   await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    const exisitingUser = await pool.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email]
+    );
     //exisiting user
     if (exisitingUser.rows[0]) {
       return res.status(200).send({
@@ -35,7 +36,7 @@ export  const SignUp = async (req, res) => {
     const hashedPassword = await hashPassword(password);
     //save
     const user = await pool.query(
-      'INSERT INTO users (name, email, password, batch, age) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      "INSERT INTO users (name, email, password, batch, age) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [name, email, hashedPassword, batch, age]
     );
 
@@ -53,4 +54,3 @@ export  const SignUp = async (req, res) => {
     });
   }
 };
-

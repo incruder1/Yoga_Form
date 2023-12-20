@@ -22,7 +22,7 @@ const BatchUpdateForm = ( ) => {
     try {
       
       const data = await axios.get(
-        `https://yogaform-production-74ce.up.railway.app/api/get-user/${auth?.user?.email}`
+        `http://localhost:3001/api/get-user/${auth?.user?.email}`
       );
       setUserData(data?.data?.data);
       
@@ -46,7 +46,7 @@ const BatchUpdateForm = ( ) => {
     try {
         
       const response = await axios.put(
-        `https://yogaform-production-74ce.up.railway.app/api/update-batch/${auth?.user?.email}`,
+        `http://localhost:3001/api/update-batch/${auth?.user?.email}`,
         {
           batch: newBatch,
         }
