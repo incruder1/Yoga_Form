@@ -1,6 +1,6 @@
 CREATE DATABASE yogaDB;
 
--- \c yogaDB;
+
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,

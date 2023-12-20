@@ -14,8 +14,7 @@ const Login = async (req, res) => {
     }
     //check user
     const user = await pool.query("SELECT * FROM users WHERE email = $1", [
-      email,
-    ]);
+      email]);
     if (!user) {
       return res.status(404).send({
         success: false,
@@ -34,7 +33,7 @@ const Login = async (req, res) => {
 
     //token
     const token = await JWT.sign({ _id: user.rows[0].id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "7d",
     });
     console.log(token);
     res.status(200).send({

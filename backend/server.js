@@ -20,9 +20,9 @@ app.post('/api/signup',SignUp);
  
 app.post('/api/login',Login);
 
-app.put('/api/update-batch/:userId', async (req, res) => {
+app.put('/api/update-batch/:email', async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { email } = req.params;
     const { batch } = req.body;
 
     // Validate input (add more validation as needed)
@@ -31,8 +31,8 @@ app.put('/api/update-batch/:userId', async (req, res) => {
     }
 
     // Update user's batch information in the database
-    const result = await pool.query('UPDATE users SET batch = $1 WHERE id = $2 RETURNING *', [
-      batch,userId]);
+    const result = await pool.query('UPDATE users SET batch = $1 WHERE email = $2 RETURNING *', [
+      batch,email]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'User not found.' });
@@ -44,17 +44,17 @@ app.put('/api/update-batch/:userId', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-app.get('/api/get-user/:userId', async (req, res) => {
+app.get('/api/get-user/:email', async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { email } = req.params;
 
     // Validate input (add more validation as needed)
-    if (!userId) {
+    if (!email) {
       return res.status(400).json({ error: 'Missing required fields.' });
     }
 
     // Retrieve user information by email from the database
-    const result = await pool.query('SELECT * FROM users WHERE id = $1', [userId]);
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'User not found.'});

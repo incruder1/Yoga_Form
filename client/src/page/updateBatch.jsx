@@ -22,7 +22,7 @@ const BatchUpdateForm = ( ) => {
     try {
       
       const data = await axios.get(
-        `http://localhost:3001/api/get-user/${auth?.user?._id}`
+        `http://localhost:3001/api/get-user/${auth?.user?.email}`
       );
       setUserData(data?.data?.data);
       
@@ -32,7 +32,7 @@ const BatchUpdateForm = ( ) => {
   }
   useEffect(() => {
     getData();
-  }, [auth?.user?._id]);
+  }, [auth?.user?.email]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ const BatchUpdateForm = ( ) => {
     try {
         
       const response = await axios.put(
-        `http://localhost:3001/api/update-batch/${auth?.user?._id}`,
+        `http://localhost:3001/api/update-batch/${auth?.user?.email}`,
         {
           batch: newBatch,
         }
@@ -72,11 +72,13 @@ const BatchUpdateForm = ( ) => {
           </div>
           <div className="mb-3">
             <p> Email:- {userData?.email}</p>
+          </div><div className="mb-3">
+            <p> Age:- {userData?.age}</p>
           </div>
           <div className="mb-3">
-            <p>Current Batch:-
+            <p>Current Batch:- 
             {
-                userData?.batch === "1" ? " (6-7AM)": userData?.batch === "2" ? " (7-8AM)": userData?.batch === "3" ? " (8-9AM)": userData?.batch === "4" ? " (5-6PM)": " (Not Assigned Yet)"
+                userData?.batch === 1 ? " (6-7AM)": userData?.batch === 2 ? " (7-8AM)": userData?.batch === 3 ? " (8-9AM)": userData?.batch ===4 ? " (5-6PM)": " (Not Assigned Yet)"
             }
             
             </p>
