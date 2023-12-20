@@ -15,23 +15,30 @@ const SignUp = () => {
   const [batch, setBatch] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const navigate = useNavigate();
   const handleAgeChange = (e) => {
     const enteredAge = e.target.value;
-
+    
     setAge(enteredAge);
     // Validate age
     if (enteredAge < 18 || enteredAge > 65) {
       setErrorMessage("Age must be between 18 and 65.");
-    } else {
+      } else {
       setErrorMessage("");
     }
   };
-  const navigate = useNavigate();
+ 
 
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if(age<18 || age>65)
+        {
+          toast.error("Age must be between 18 and 65.");
+          navigate("/signup")
+          return;
+        }
       const res = await axios.post("https://yoga-backend-iqvz.onrender.com/api/signup", {
         email,password,batch, name,age
       });
