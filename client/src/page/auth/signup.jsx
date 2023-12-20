@@ -32,7 +32,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3001/api/signup", {
+      const res = await axios.post("https://yoga-backend-iqvz.onrender.com/api/signup", {
         email,password,batch, name,age
       });
       if (res && res.data.success) {

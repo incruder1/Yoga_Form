@@ -22,7 +22,7 @@ const BatchUpdateForm = ( ) => {
     try {
       
       const data = await axios.get(
-        `http://localhost:3001/api/get-user/${auth?.user?.email}`
+        `https://yoga-backend-iqvz.onrender.com/api/get-user/${auth?.user?.email}`
       );
       setUserData(data?.data?.data);
       
@@ -46,7 +46,7 @@ const BatchUpdateForm = ( ) => {
     try {
         
       const response = await axios.put(
-        `http://localhost:3001/api/update-batch/${auth?.user?.email}`,
+        `https://yoga-backend-iqvz.onrender.com/api/update-batch/${auth?.user?.email}`,
         {
           batch: newBatch,
         }
