@@ -33,8 +33,8 @@ const Login = async (req, res) => {
     }
 
     //token
-    const token = await JWT.sign({ _id: user.rows[0]._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+    const token = await JWT.sign({ _id: user.rows[0].id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
     });
     console.log(token);
     res.status(200).send({

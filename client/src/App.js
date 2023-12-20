@@ -4,6 +4,7 @@ import HomePage from './page/HomePage';
 import Login from './page/auth/login.jsx';
 import SignUp from "./page/auth/signup.jsx"
 import FormPage from './page/form.jsx';
+import { Toaster } from "react-hot-toast";
 import BatchUpdateForm from "./page/updateBatch.jsx"
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
     <Route path="/update" element={<BatchUpdateForm />} />
 
      </Routes>
+     <Toaster />
    </>
   );
 }

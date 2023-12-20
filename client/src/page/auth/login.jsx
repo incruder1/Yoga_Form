@@ -3,8 +3,8 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import "./style.css";
-import { useAuth } from "../../context/auth.js";
-// import Header from "../../component/header.jsx";
+import Header from "../../component/header.jsx";
+import { useAuth } from "../../context/auth.js"; 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +39,7 @@ const Login = () => {
   };
   return (
     <>
-      {/* <Header /> */}
+      <Header />
 
       <div className="form-container " style={{ minHeight: "90vh" }}>
         <form onSubmit={handleSubmit}>

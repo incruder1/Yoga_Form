@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 //NOTIFICATION SUCCESS
 import toast from "react-hot-toast";
 // import Header from "../../component/header";
+import Header from '../../component/header.jsx'
 import "./style.css";
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -36,7 +37,7 @@ const SignUp = () => {
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
-        navigate("/login");
+        navigate("/");
       } else {
         toast.error(res.data.message);
       }
@@ -49,7 +50,7 @@ const SignUp = () => {
   return (
     // <Layout title="Register - Ecommerce App">
     <>
-      {/* <Header /> */}
+      <Header />
       <div className="form-container" style={{ minHeight: "90vh" }}>
         <form onSubmit={handleSubmit}>
           <h4 className="title">REGISTER FORM</h4>
